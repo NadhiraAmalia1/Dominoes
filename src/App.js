@@ -44,7 +44,7 @@ export default function App() {
       {/* Box: Source */}
       <div style={s.box}>
         <div style={s.boxTitle}>Source</div>
-        <div style={s.boxBody}>{renderSourceInline(data)}</div>
+        <div style={s.boxBody}>{renderSourceInline(DEFAULT_DATA)}</div>
       </div>
 
       {/* Box: Double Numbers */}
