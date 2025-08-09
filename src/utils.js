@@ -13,16 +13,14 @@ export const sort = (dominoes, order = "asc") => {
 };
 
 export const removeDuplicates = (dominoes) => {
-  const counts = dominoes.reduce((acc, [a, b]) => {
-    const key = `${Math.min(a, b)}|${Math.max(a, b)}`;
+  const keys = dominoes.map(([a, b]) => `${Math.min(a, b)}|${Math.max(a, b)}`);
+
+  const counts = keys.reduce((acc, key) => {
     acc[key] = (acc[key] || 0) + 1;
     return acc;
   }, {});
 
-  return dominoes.filter(([a, b]) => {
-    const key = `${Math.min(a, b)}|${Math.max(a, b)}`;
-    return counts[key] === 1;
-  });
+  return dominoes.filter((_, i) => counts[keys[i]] === 1);
 };
 
 export const flipAll = (dominoes) => dominoes.map(([a, b]) => [b, a]);
